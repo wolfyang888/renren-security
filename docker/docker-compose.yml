@@ -1,0 +1,32 @@
+version: '3'
+services:
+  db:
+#    image: 'mysql/mysql-server:5.7'
+    image: 'oath/mysql:4.0'
+    restart: always
+    container_name: OATH
+    environment:
+    - MYSQL_USER=oathAdm
+    - MYSQL_PASSWORD=123456
+    - MYSQL_ROOT_PASSWORD=123456
+    - MYSQL_DATABASE=renren_security
+    volumes:
+    - data:/var/lib/mysql
+    - ./my.cnf:/etc/my.cnf
+#    - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    - ./setup.sh:/var/lib/mysql/setup.sh
+    - ./privileges.sql:/var/lib/mysql/privileges.sql
+    - ./refresh_token.sql:/var/lib/mysql/api.sql
+    - ./admin.sql:/var/lib/mysql/admin.sql
+    ports:
+    - '3306:3306'
+    command:
+      - /bin/bash
+      - -c
+      - |
+        chmod u+x /var/lib/mysql/setup.sh
+        /var/lib/mysql/setup.sh
+
+volumes:
+  data:
+    driver: local
