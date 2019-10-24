@@ -13,10 +13,9 @@ services:
     volumes:
     - data:/var/lib/mysql
     - ./my.cnf:/etc/my.cnf
-#    - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     - ./setup.sh:/var/lib/mysql/setup.sh
     - ./privileges.sql:/var/lib/mysql/privileges.sql
-    - ./refresh_token.sql:/var/lib/mysql/api.sql
+    - ./apidb.sql:/var/lib/mysql/apidb.sql
     - ./admin.sql:/var/lib/mysql/admin.sql
     ports:
     - '3306:3306'

@@ -12,6 +12,6 @@ echo `service mysql status`
 echo '2.导入数据mysql....'
 mysql < /var/lib/mysql/privileges.sql
 mysql < /var/lib/mysql/admin.sql
-mysql < /var/lib/mysql/api.sql
+mysql < /var/lib/mysql/apidb.sql
 # 等待mysqld 退出,挂住容器
 wait $pid
