@@ -9,9 +9,11 @@
 package io.renren.modules.sys.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import io.renren.common.utils.PageUtils;
 import io.renren.modules.sys.entity.SysUserRoleEntity;
 
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -20,9 +22,11 @@ import java.util.List;
  * @author Mark sunlightcs@gmail.com
  */
 public interface SysUserRoleService extends IService<SysUserRoleEntity> {
-	
+
+	PageUtils queryPage(Map<String, Object> params);
+
 	void saveOrUpdate(Long userId, List<Long> roleIdList);
-	
+
 	/**
 	 * 根据用户ID，获取角色ID列表
 	 */

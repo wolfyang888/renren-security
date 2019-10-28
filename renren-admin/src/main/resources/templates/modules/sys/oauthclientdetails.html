@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+		<#include "/header.html">
+</head>
+<body>
+<div id="rrapp" v-cloak>
+    <div v-show="showList">
+        <div class="grid-btn">
+			<#if shiro.hasPermission("sys:oauthclientdetails:save")>
+            <a class="btn btn-primary" @click="add"><i class="fa fa-plus"></i>&nbsp;新增</a>
+			</#if>
+			<#if shiro.hasPermission("sys:oauthclientdetails:update")>
+            <a class="btn btn-primary" @click="update"><i class="fa fa-pencil-square-o"></i>&nbsp;修改</a>
+			</#if>
+			<#if shiro.hasPermission("sys:oauthclientdetails:delete")>
+            <a class="btn btn-primary" @click="del"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
+			</#if>
+        </div>
+        <table id="jqGrid"></table>
+        <div id="jqGridPager"></div>
+    </div>
+
+    <div v-show="!showList" class="panel panel-default">
+        <div class="panel-heading">{{title}}</div>
+        <form class="form-horizontal">
+														                    <div class="form-group">
+                        <div class="col-sm-2 control-label">资源ID</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="oauthClientDetails.resourceIds" placeholder="资源ID"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">客户密钥</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="oauthClientDetails.clientSecret" placeholder="客户密钥"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">范围</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="oauthClientDetails.scope" placeholder="范围"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">授权类型</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="oauthClientDetails.authorizedGrantTypes" placeholder="授权类型"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">资源</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="oauthClientDetails.webServerRedirectUri" placeholder="资源"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">授权</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="oauthClientDetails.authorities" placeholder="授权"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">token是否有效</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="oauthClientDetails.accessTokenValidity" placeholder="token是否有效"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">refreshToken 间隔</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="oauthClientDetails.refreshTokenValidity" placeholder="refreshToken 间隔"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">附加信息</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="oauthClientDetails.additionalInformation" placeholder="附加信息"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">自动同一</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="oauthClientDetails.autoapprove" placeholder="自动同一"/>
+                        </div>
+                    </div>
+							            <div class="form-group">
+                <div class="col-sm-2 control-label"></div>
+                <input type="button" class="btn btn-primary" id="btnSaveOrUpdate" data-loading-text="保存中..." @click="saveOrUpdate" value="确定"/>
+                &nbsp;&nbsp;<input type="button" class="btn btn-warning" @click="reload" value="返回"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="${request.contextPath}/statics/js/modules/sys/oauthclientdetails.js?_${.now?long}"></script>
+</body>
+</html>

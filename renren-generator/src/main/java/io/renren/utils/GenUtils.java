@@ -51,8 +51,7 @@ public class GenUtils {
 	/**
 	 * 生成代码
 	 */
-	public static void generatorCode(Map<String, String> table,
-			List<Map<String, String>> columns, ZipOutputStream zip){
+	public static void generatorCode(Map<String, String> table, List<Map<String, String>> columns, ZipOutputStream zip){
 		//配置信息
 		Configuration config = getConfig();
 		boolean hasBigDecimal = false;
