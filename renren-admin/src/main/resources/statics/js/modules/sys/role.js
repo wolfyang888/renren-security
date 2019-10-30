@@ -83,7 +83,7 @@ var data_setting = {
             rootPId: -1
         },
         key: {
-            url:"nourl"
+            url:"nourl",
         }
     },
     check:{
